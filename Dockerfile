@@ -6,7 +6,11 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm install -g peer
+
+RUN npm run build --no-cache
 
 EXPOSE 3000
+EXPOSE 9000
+
 

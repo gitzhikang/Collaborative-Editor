@@ -1,0 +1,13 @@
+# Dockerfile for PeerJS Server
+FROM node:14
+
+WORKDIR /usr/src/app
+
+# 全局安装 PeerJS 服务器
+RUN npm install -g peer
+
+# 只暴露 PeerJS 端口
+EXPOSE 9000
+
+# 启动 PeerJS 服务器
+CMD ["peerjs", "--port", "9000", "--key", "peerjs"]

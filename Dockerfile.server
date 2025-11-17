@@ -1,0 +1,20 @@
+# Dockerfile for Conclave Web Server
+FROM node:14
+
+WORKDIR /usr/src/app
+
+# 复制 package 文件并安装依赖
+COPY package*.json ./
+RUN npm install
+
+# 复制应用代码
+COPY . .
+
+# 构建前端资源
+RUN npm run build --no-cache
+
+# 只暴露 Web 服务器端口
+EXPOSE 3000
+
+# 启动 Web 服务器
+CMD ["npm", "start"]
