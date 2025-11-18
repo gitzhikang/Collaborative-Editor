@@ -8,7 +8,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
-  res.render('index', {title: 'Conclave'});
+  res.render('index', {title: 'Collaborative Editor'});
 });
 
 app.get('/about', function (req, res) {
@@ -16,7 +16,7 @@ app.get('/about', function (req, res) {
 });
 
 app.get('/bots', function(req, res) {
-  res.render('bots', {title: 'Talk to Bots'});
+  res.render('bots', {title: 'Bots'});
 });
 
 app.get('/idLength', function (req, res) {
