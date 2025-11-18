@@ -17,6 +17,13 @@ block link
     span(class="copy-container" data-tooltip="Copy to Clipboard")
       i(data-feather="copy" class="copy-link" color="rgb(17, 117, 232)")
     span(class="copy-status") Copied!
+  
+  .connect-section
+    p.connect-label Connect to Peer:
+    .connect-controls
+      input(type="text" id="peerIdInput" placeholder="Enter Peer ID..." class="peer-id-input")
+      button(id="connectBtn" class="connect-btn") Connect
+      span(class="connect-status")
 
 block scripts
   script(src='js/main.js')
