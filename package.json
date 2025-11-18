@@ -1,5 +1,5 @@
 {
-  "name": "conclave",
+  "name": "collaborative-editor",
   "version": "1.0.0",
   "description": "Peer-to-peer collaborative text editor",
   "main": "electron-main.js",
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Super-NES/conclave.git"
+    "url": ""
   },
-  "author": "Super-NES",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Super-NES/conclave/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/Super-NES/conclave#readme",
+  "homepage": "",
   "dependencies": {
     "acorn": "^6.4.2",
     "express": "^4.17.1",
@@ -56,8 +56,8 @@
     "webpack-cli": "^4.7.0"
   },
   "build": {
-    "appId": "com.conclave.app",
-    "productName": "Conclave",
+    "appId": "com.collaborative.editor",
+    "productName": "Collaborative Editor",
     "directories": {
       "output": "dist"
     },

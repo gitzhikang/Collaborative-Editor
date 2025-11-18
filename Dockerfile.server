@@ -1,4 +1,4 @@
-# Dockerfile for Conclave Web Server
+# Dockerfile for Collaborative Editor Web Server
 FROM node:14
 
 WORKDIR /usr/src/app

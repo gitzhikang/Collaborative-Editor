@@ -16,7 +16,7 @@ function createServer() {
   expressApp.set('view engine', 'pug');
 
   expressApp.get('/', function (req, res) {
-    res.render('index', {title: 'Conclave'});
+    res.render('index', {title: 'Collaborative Editor'});
   });
 
   expressApp.get('/about', function (req, res) {

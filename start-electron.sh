@@ -1,8 +1,8 @@
 #!/bin/bash
-# Conclave Electron 快速启动脚本
+# Collaborative Editor Electron 快速启动脚本
 
 echo "==================================="
-echo "Conclave Electron 客户端启动脚本"
+echo "Collaborative Editor Electron 客户端启动脚本"
 echo "==================================="
 echo ""
 
