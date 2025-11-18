@@ -80,12 +80,30 @@ function createWindow(port) {
 
   // 处理摄像头/麦克风权限请求
   mainWindow.webContents.session.setPermissionRequestHandler((webContents, permission, callback) => {
-    if (permission === 'media' || permission === 'mediaKeySystem') {
+    const allowedPermissions = ['media', 'mediaKeySystem', 'geolocation', 'notifications', 'midi', 'midiSysex', 'pointerLock', 'fullscreen'];
+    
+    if (allowedPermissions.includes(permission)) {
       // 自动允许媒体设备访问
       callback(true);
     } else {
       callback(false);
     }
+  });
+
+  // 处理权限检查
+  mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
+    if (permission === 'media') {
+      return true;
+    }
+    return false;
+  });
+
+  // 设置设备权限处理器
+  mainWindow.webContents.session.setDevicePermissionHandler((details) => {
+    if (details.deviceType === 'videoinput' || details.deviceType === 'audioinput') {
+      return true;
+    }
+    return false;
   });
 }
 

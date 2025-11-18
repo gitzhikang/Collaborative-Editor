@@ -76,7 +76,9 @@
       "target": [
         "dmg",
         "zip"
-      ]
+      ],
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist"
     },
     "win": {
       "icon": "public/assets/img/favicon.ico",
