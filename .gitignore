@@ -6,3 +6,8 @@ debug.js
 .DS_Store
 /performance/logs/*
 !/performance/logs/.gitkeep
+
+# Electron 构建输出
+/dist
+/out
+*.log
