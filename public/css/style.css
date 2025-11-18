@@ -481,6 +481,54 @@ Remote Cursors
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
+/********************
+Calling Peer / Phone Icons
+********************/
+
+.phone {
+  display: inline-block;
+  margin-left: 5px;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.phone-in,
+.phone-out,
+.phone-call {
+  display: none;
+  margin-left: 5px;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+}
+
+/* Hide default phone when in any call state */
+.calling .phone,
+.beingCalled .phone,
+.answered .phone {
+  display: none;
+}
+
+/* Show phone-out when calling */
+.calling .phone-out {
+  display: inline-block;
+  animation: blinker 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+}
+
+/* Show phone-in when being called */
+.beingCalled .phone-in {
+  display: inline-block;
+  animation: blinker 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+  cursor: pointer;
+}
+
+/* Show phone-call when answered */
+.answered .phone-call {
+  display: inline-block;
+}
+
 /****************
 Loading Screen
 ****************/
