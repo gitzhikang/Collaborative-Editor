@@ -3,11 +3,11 @@ FROM node:14
 
 WORKDIR /usr/src/app
 
-# 全局安装 PeerJS 服务器
+# Globally install PeerJS server
 RUN npm install -g peer
 
-# 只暴露 PeerJS 端口
+# Expose only PeerJS port
 EXPOSE 9000
 
-# 启动 PeerJS 服务器
+# Start PeerJS server
 CMD ["peerjs", "--port", "9000", "--key", "peerjs"]

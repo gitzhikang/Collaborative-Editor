@@ -8,23 +8,23 @@ let expressApp;
 let server;
 
 function createServer() {
-  // 创建 Express 应用
+  // Create Express app
   expressApp = express();
-  
+
   expressApp.use(express.static('public'));
   expressApp.set('views', path.join(__dirname, 'views'));
   expressApp.set('view engine', 'pug');
 
   expressApp.get('/', function (req, res) {
-    res.render('index', {title: 'Collaborative Editor'});
+    res.render('index', { title: 'Collaborative Editor' });
   });
 
   expressApp.get('/about', function (req, res) {
-    res.render('about', {title: 'About'});
+    res.render('about', { title: 'About' });
   });
 
-  expressApp.get('/bots', function(req, res) {
-    res.render('bots', {title: 'Talk to Bots'});
+  expressApp.get('/bots', function (req, res) {
+    res.render('bots', { title: 'Talk to Bots' });
   });
 
   expressApp.get('/idLength', function (req, res) {
@@ -38,18 +38,18 @@ function createServer() {
   expressApp.get('/arraysGraph', function (req, res) {
     res.render('arraysGraph');
   });
-  
-  // 启动本地服务器
+
+  // Start local server
   server = expressApp.listen(0, 'localhost', () => {
     const port = server.address().port;
     console.log(`Local server running on http://localhost:${port}`);
-    
-    // 设置 PeerJS 服务器
+
+    // Setup PeerJS server
     expressApp.use('/peerjs', peer.ExpressPeerServer(server, {
       debug: true
     }));
-    
-    // 服务器启动后创建窗口
+
+    // Create window after server starts
     createWindow(port);
   });
 }
@@ -62,35 +62,35 @@ function createWindow(port) {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      // 允许访问摄像头和麦克风
+      // Allow access to camera and microphone
       webSecurity: true,
     },
     icon: path.join(__dirname, 'public/assets/img/favicon.ico')
   });
 
-  // 加载本地服务器
+  // Load local server
   mainWindow.loadURL(`http://localhost:${port}`);
 
-  // 开发模式下打开开发者工具
+  // Open DevTools in development mode
   // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
 
-  // 处理摄像头/麦克风权限请求
+  // Handle camera/microphone permission requests
   mainWindow.webContents.session.setPermissionRequestHandler((webContents, permission, callback) => {
     const allowedPermissions = ['media', 'mediaKeySystem', 'geolocation', 'notifications', 'midi', 'midiSysex', 'pointerLock', 'fullscreen'];
-    
+
     if (allowedPermissions.includes(permission)) {
-      // 自动允许媒体设备访问
+      // Automatically allow media device access
       callback(true);
     } else {
       callback(false);
     }
   });
 
-  // 处理权限检查
+  // Handle permission checks
   mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
     if (permission === 'media') {
       return true;
@@ -98,7 +98,7 @@ function createWindow(port) {
     return false;
   });
 
-  // 设置设备权限处理器
+  // Set device permission handler
   mainWindow.webContents.session.setDevicePermissionHandler((details) => {
     if (details.deviceType === 'videoinput' || details.deviceType === 'audioinput') {
       return true;
@@ -124,7 +124,7 @@ app.on('activate', () => {
   }
 });
 
-// 在应用退出前关闭服务器
+// Close server before app quits
 app.on('before-quit', () => {
   if (server) {
     server.close();
