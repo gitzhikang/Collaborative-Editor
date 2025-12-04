@@ -8,15 +8,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
-  res.render('index', {title: 'Collaborative Editor'});
+  res.render('index', { title: 'Collaborative Editor' });
 });
 
 app.get('/about', function (req, res) {
-  res.render('about', {title: 'About'});
+  res.render('about', { title: 'About' });
 });
 
-app.get('/bots', function(req, res) {
-  res.render('bots', {title: 'Bots'});
+app.get('/bots', function (req, res) {
+  res.render('bots', { title: 'Bots' });
 });
 
 app.get('/idLength', function (req, res) {
@@ -31,10 +31,11 @@ app.get('/arraysGraph', function (req, res) {
   res.render('arraysGraph');
 })
 
-var srv = app.listen(port, function() {
-	console.log('Listening on '+port)
+var srv = app.listen(port, function () {
+  console.log('Listening on ' + port)
 })
 
 app.use('/peerjs', require('peer').ExpressPeerServer(srv, {
-	debug: true
+  debug: true,
+  allow_discovery: true
 }))
